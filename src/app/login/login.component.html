@@ -1,0 +1,34 @@
+<form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit(user)">
+
+    <!-- Form Group -->
+    <div class="form-group">
+        <label for="email-1">User ID</label>
+        <input type="email" class="form-control" id="email-1" aria-describedby="email-1"
+            [(ngModel)]="user.email" #email="ngModel" [ngModelOptions]="{standalone: true}"
+            [ngClass]="{'is-invalid': loginForm.submitted && email.invalid}"
+            placeholder="User ID" required />
+        <div class="invalid-feedback" *ngIf="loginForm.submitted && email.invalid">
+            <div *ngIf="email.errors.required">User ID Required</div>
+        </div>
+    </div>
+    <!-- /form group -->
+
+    <!-- Form Group -->
+    <div class="form-group">
+        <label for="password-1">Password</label>
+        <input type="password" class="form-control" id="password-1"
+            [(ngModel)]="user.password" #password="ngModel"
+            [ngModelOptions]="{standalone: true}"
+            [ngClass]="{'is-invalid': loginForm.submitted && password.invalid}"
+            placeholder="Password" required />
+        <div class="invalid-feedback" *ngIf="loginForm.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Password is Required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary text-uppercase">Login</button>
+        </div>
+
+
+</form>
